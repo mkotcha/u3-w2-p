@@ -2,7 +2,7 @@ import { Container, ListGroup, ListGroupItem } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import CityResultItem from "./CityResultItem";
 
-const FavouritesBox = () => {
+const FavouritesList = () => {
   const favourites = useSelector(state => state.favourites.content);
   return (
     <>
@@ -20,4 +20,4 @@ const FavouritesBox = () => {
   );
 };
 
-export default FavouritesBox;
+export default FavouritesList;

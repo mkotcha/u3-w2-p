@@ -36,7 +36,6 @@ const CityResultItem = ({ city }) => {
         xs={1}
         onClick={event => {
           event.stopPropagation();
-          console.log(favArray);
           favArray.push(city);
 
           localStorage.setItem("favourites", JSON.stringify(favArray));

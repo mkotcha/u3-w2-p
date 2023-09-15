@@ -9,9 +9,7 @@ function App() {
   const favourites = useSelector(state => state.favourites.content);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    // console.log("fav fav");
-  }, [favourites]);
+  useEffect(() => {}, [favourites]);
 
   useEffect(() => {
     const favString = localStorage.getItem("favourites");

@@ -1,11 +1,11 @@
-import FavouritesBox from "./FavouritesBox";
+import FavouritesList from "./FavouritesList";
 import SearchBox from "./SearchBox";
 
 const HomePage = () => {
   return (
     <>
       <SearchBox />
-      <FavouritesBox />
+      <FavouritesList />
     </>
   );
 };
