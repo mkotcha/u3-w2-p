@@ -10,8 +10,8 @@ const FavouritesBox = () => {
         <h5>Favoutrites</h5>
         <ListGroup>
           {favourites.map((elm, i) => (
-            <ListGroupItem>
-              <CityResultItem key={i} city={elm} />
+            <ListGroupItem key={i}>
+              <CityResultItem city={elm} />
             </ListGroupItem>
           ))}
         </ListGroup>

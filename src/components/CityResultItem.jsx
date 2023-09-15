@@ -1,12 +1,23 @@
 import { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const CityResultItem = ({ city }) => {
   const dispatch = useDispatch();
   const [added, setAdded] = useState(false);
   let navigate = useNavigate();
+  const favourites = useSelector(state => state.favourites.content);
+
+  const favString = localStorage.getItem("favourites");
+  let favArray = [];
+
+  const jsonFav = JSON.parse(favString);
+
+  if (favString) {
+    favArray = jsonFav;
+  }
+  // const favArray = JSON.parse(favString);
 
   useEffect(() => {
     if (added) navigate("weather");
@@ -25,9 +36,11 @@ const CityResultItem = ({ city }) => {
         xs={1}
         onClick={event => {
           event.stopPropagation();
-          console.log("click");
+          console.log(favArray);
+          favArray.push(city);
+
+          localStorage.setItem("favourites", JSON.stringify(favArray));
           dispatch({ type: "ADD_TO_FAVOURITE", payload: city });
-          localStorage.setItem("favourites", JSON.stringify(city));
         }}>
         <i className="bi bi-star"></i>
       </Col>
