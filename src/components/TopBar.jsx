@@ -3,9 +3,11 @@ import { NavLink } from "react-router-dom";
 
 const TopBar = () => {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="md" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">EpiWeather</Navbar.Brand>
+        <NavLink className="navbar-brand" to="/">
+          EpiWeather
+        </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

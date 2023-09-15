@@ -21,7 +21,14 @@ const CityResultItem = ({ city }) => {
       <Col>{city.name}</Col>
       <Col xs={3}>{city.state}</Col>
       <Col xs={3}>country: {city.country}</Col>
-      <Col xs={1}>
+      <Col
+        xs={1}
+        onClick={event => {
+          event.stopPropagation();
+          console.log("click");
+          dispatch({ type: "ADD_TO_FAVOURITE", payload: city });
+          localStorage.setItem("favourites", JSON.stringify(city));
+        }}>
         <i className="bi bi-star"></i>
       </Col>
     </Row>

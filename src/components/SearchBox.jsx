@@ -30,10 +30,10 @@ const SearchBox = () => {
   }, [filter]);
 
   return (
-    <Container>
-      <Form.Label>Search</Form.Label>
+    <Container className="bg-body-tertiary my-5 rounded-4 p-3">
+      <Form.Label>Search location</Form.Label>
       <Form.Control type="text" aria-describedby="City search" onChange={e => setFilter(e.target.value)} />
-      <Form.Text muted>Search your city</Form.Text>
+
       {cityResults.map((elm, i) => (
         <CityResultItem key={i} city={elm} />
       ))}
