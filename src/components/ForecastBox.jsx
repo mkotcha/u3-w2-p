@@ -1,8 +1,6 @@
 import { Col } from "react-bootstrap";
 
 const ForecastBox = ({ forecast }) => {
-  console.log(forecast);
-
   let time = new Date(forecast.dt_txt);
   let hour = time.getHours();
   let min = time.getMinutes();

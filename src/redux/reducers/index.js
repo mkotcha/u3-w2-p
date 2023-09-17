@@ -1,5 +1,5 @@
 const initialState = {
-  city: {
+  defaultCity: {
     lat: "",
     lon: "",
   },
@@ -14,10 +14,16 @@ const initialState = {
 
 const mainReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SET_CITY":
+    case "SET_DEF_CITY":
       return {
         ...state,
-        city: action.payload,
+        defaultCity: action.payload,
+      };
+
+    case "REMOVE_DEF_CITY":
+      return {
+        ...state,
+        defaultCity: { lat: "", lon: "" },
       };
 
     case "ADD_TO_FAVOURITES":

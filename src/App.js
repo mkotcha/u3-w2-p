@@ -7,12 +7,15 @@ import { useEffect } from "react";
 
 function App() {
   const favourites = useSelector(state => state.favourites.content);
+  // const defCity = useSelector(state => state.defaultCity);
   const dispatch = useDispatch();
 
   useEffect(() => {}, [favourites]);
 
   useEffect(() => {
     const favString = localStorage.getItem("favourites");
+    let defaultCity = localStorage.getItem("defaultCity");
+    defaultCity = JSON.parse(defaultCity);
     const favArray = [];
     if (favString) {
       favArray.push(...JSON.parse(favString));
@@ -22,6 +25,11 @@ function App() {
       // favArray.map(city => dispatch({ type: "ADD_TO_FAVOURITE", payload: city }));
       dispatch({ type: "SET_FAVOURITES", payload: [...favArray] });
     }
+
+    console.log(defaultCity);
+    if (defaultCity) {
+      dispatch({ type: "SET_DEF_CITY", payload: { lat: defaultCity.lat, lon: defaultCity.lon } });
+    }
   }, []);
 
   return (
@@ -30,6 +38,7 @@ function App() {
         <TopBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/weather" element={<Weather />} />
           <Route path="/weather/:lat/:lon" element={<Weather />} />
         </Routes>
       </BrowserRouter>

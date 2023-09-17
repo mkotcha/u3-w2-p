@@ -14,6 +14,9 @@ const TopBar = () => {
             <NavLink className="nav-link" to="/">
               Home
             </NavLink>
+            <NavLink className="nav-link" to="/weather">
+              Weather
+            </NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>

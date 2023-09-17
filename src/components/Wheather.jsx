@@ -2,19 +2,19 @@ import { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import ForecastBox from "./ForecastBox";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Weather = () => {
-  const city = useSelector(state => state.city);
+  const defCity = useSelector(state => state.defaultCity);
   const param = useParams();
+  const navigate = useNavigate();
   const [weather, setWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
 
   useEffect(() => {
-    const fetchWeather = async (city, option) => {
+    const fetchWeather = async (lat, lon, option) => {
       const appid = "&appid=172d95e0ad55cb054eb4ebc27262674e&units=metric";
-      const url =
-        "https://api.openweathermap.org/data/2.5/" + option + "?lat=" + city.lat + "&cnt=6&lon=" + city.lon + appid;
+      const url = "https://api.openweathermap.org/data/2.5/" + option + "?lat=" + lat + "&cnt=6&lon=" + lon + appid;
       try {
         const response = await fetch(url);
         if (response.ok) {
@@ -29,10 +29,19 @@ const Weather = () => {
       } finally {
       }
     };
-    city.lat = param.lat;
-    city.lon = param.lon;
-    fetchWeather(city, "weather");
-    fetchWeather(city, "forecast");
+
+    console.log("param ", param.lat);
+    console.log("defCity ", defCity);
+    if (param.lat && param.lon) {
+      fetchWeather(param.lat, param.lon, "weather");
+      fetchWeather(param.lat, param.lon, "forecast");
+    } else if (defCity.lat && defCity.lon) {
+      console.log("defCity");
+      fetchWeather(defCity.lat, defCity.lon, "weather");
+      fetchWeather(defCity.lat, defCity.lon, "forecast");
+    } else {
+      navigate("/");
+    }
   }, []);
 
   return (
