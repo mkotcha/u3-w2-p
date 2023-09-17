@@ -16,8 +16,10 @@ const ForecastBox = ({ forecast }) => {
           <div>{time}</div>
           <div className="wi-4x">{forecast && <i className={"wi wi-xl wi-owm-" + forecast.weather[0].icon}></i>}</div>
           <div className="my-3">
-            <i className="bi bi-thermometer-low me-2">{forecast.main.temp_min}&#176;</i>
-            <i className="bi bi-thermometer-high">{forecast.main.temp_max}&#176;</i>
+            <i className="bi bi-thermometer-low text-info"></i>
+            {forecast.main.temp_min}&#176;
+            <i className="bi bi-thermometer-high text-danger"></i>
+            {forecast.main.temp_max}&#176;
           </div>
         </div>
       </Col>

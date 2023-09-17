@@ -64,23 +64,30 @@ const CityResultItem = ({ city }) => {
 
   return (
     <Row
-      className=""
+      className="m-0 p-0 g-0 "
       onClick={() => {
         // dispatch({ type: "SET_CITY", payload: { lat: city.lat, lon: city.lon } });
         navigate("weather/" + city.lat + "/" + city.lon);
       }}>
-      <Col>{city.name}</Col>
+      <Col xs={5} className="">
+        {city.name}
+      </Col>
       <Col xs={4}>{city.state}</Col>
-      <Col xs={2}>{city.country}</Col>
-      <Col xs={1} onClick={event => setDefault(event, city)}>
+      <Col xs={1} className="text-center">
+        {city.country}
+      </Col>
+      <Col xs={1} className="text-center" onClick={event => setDefault(event, city)}>
         <OverlayTrigger
           placement="top"
           overlay={<Tooltip>{isDefault(city) ? "unset default" : "set as default"}</Tooltip>}>
           {isDefault(city) ? <i className="bi bi-check-square"></i> : <i className="bi bi-square"></i>}
         </OverlayTrigger>
       </Col>
-      <Col xs={1} onClick={isFavourite(city) ? event => remCity(event, city) : event => addCity(event, city)}>
-        {isFavourite(city) ? <i className="bi bi-star-fill"></i> : <i className="bi bi-star"></i>}
+      <Col
+        xs={1}
+        className="text-center"
+        onClick={isFavourite(city) ? event => remCity(event, city) : event => addCity(event, city)}>
+        {isFavourite(city) ? <i className="bi bi-star-fill text-warning"></i> : <i className="bi bi-star"></i>}
       </Col>
     </Row>
   );
