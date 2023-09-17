@@ -35,7 +35,7 @@ const Weather = () => {
     <>
       {weather && (
         <Container className="my-5 ">
-          <div className="bg-body-tertiary rounded-4 p-3">
+          <div className="bg-primary bg-gradient shadow  text-white rounded-4 p-3">
             <div className="d-flex">
               <div className="me-auto">
                 <h2 className="display-1">{weather.name}</h2>

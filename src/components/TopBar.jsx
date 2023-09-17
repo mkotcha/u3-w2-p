@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 
 const TopBar = () => {
   return (
-    <Navbar expand="md" className="bg-body-tertiary">
-      <Container>
+    <Navbar expand="md" sticky="top" className="navbar bg-primary shadow" data-bs-theme="dark">
+      <Container className="text-white">
         <NavLink className="navbar-brand" to="/">
           EpiWeather
         </NavLink>

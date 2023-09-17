@@ -44,8 +44,8 @@ const CityResultItem = ({ city }) => {
         navigate("weather");
       }}>
       <Col>{city.name}</Col>
-      <Col xs={3}>{city.state}</Col>
-      <Col xs={3}>country: {city.country}</Col>
+      <Col xs={4}>{city.state}</Col>
+      <Col xs={2}>{city.country}</Col>
       <Col xs={1} onClick={isFavourite(city) ? event => remCity(event, city) : event => addCity(event, city)}>
         {isFavourite(city) ? <i className="bi bi-star-fill"></i> : <i className="bi bi-star"></i>}
       </Col>

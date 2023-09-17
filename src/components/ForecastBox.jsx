@@ -14,7 +14,7 @@ const ForecastBox = ({ forecast }) => {
   return (
     <>
       <Col xs={6} md={4} lg={2} className="   ">
-        <div className="d-flex flex-column align-items-center bg-body-secondary rounded-4  p-3">
+        <div className="d-flex flex-column align-items-center bg-secondary text-white shadow-sm bg-gradient  rounded-4  p-3">
           <div>{time}</div>
           <div className="wi-4x">{forecast && <i className={"wi wi-xl wi-owm-" + forecast.weather[0].icon}></i>}</div>
           <div className="my-3">
