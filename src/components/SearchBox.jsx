@@ -30,13 +30,22 @@ const SearchBox = () => {
   }, [filter]);
 
   return (
-    <Container className="bg-body-tertiary my-5 rounded-4 p-3">
+    <Container className="bg-primary text-white bg-gradient shadow my-5 rounded-4 p-3">
       <Form.Label>Search location</Form.Label>
-      <Form.Control type="text" aria-describedby="City search" onChange={e => setFilter(e.target.value)} />
+      <Form.Control
+        type="text"
+        className="bg-light"
+        aria-describedby="City search"
+        onChange={e => setFilter(e.target.value)}
+      />
 
-      {cityResults.map((elm, i) => (
-        <CityResultItem key={i} city={elm} />
-      ))}
+      <div className="bg-secondary rounded-bottom-3 mx-1">
+        {cityResults.map((elm, i) => (
+          <div className="p-2">
+            <CityResultItem key={i} city={elm} />
+          </div>
+        ))}
+      </div>
     </Container>
   );
 };

@@ -39,6 +39,7 @@ const CityResultItem = ({ city }) => {
 
   return (
     <Row
+      className=""
       onClick={() => {
         dispatch({ type: "SET_CITY", payload: { lat: city.lat, lon: city.lon } });
         navigate("weather");
