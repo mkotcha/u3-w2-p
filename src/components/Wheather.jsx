@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import ForecastBox from "./ForecastBox";
+import { useParams } from "react-router-dom";
 
 const Weather = () => {
   const city = useSelector(state => state.city);
+  const param = useParams();
   const [weather, setWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
 
@@ -27,6 +29,8 @@ const Weather = () => {
       } finally {
       }
     };
+    city.lat = param.lat;
+    city.lon = param.lon;
     fetchWeather(city, "weather");
     fetchWeather(city, "forecast");
   }, []);

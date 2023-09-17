@@ -30,7 +30,7 @@ function App() {
         <TopBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/weather" element={<Weather />} />
+          <Route path="/weather/:lat/:lon" element={<Weather />} />
         </Routes>
       </BrowserRouter>
     </>

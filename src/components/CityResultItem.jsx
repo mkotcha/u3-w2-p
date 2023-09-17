@@ -41,8 +41,8 @@ const CityResultItem = ({ city }) => {
     <Row
       className=""
       onClick={() => {
-        dispatch({ type: "SET_CITY", payload: { lat: city.lat, lon: city.lon } });
-        navigate("weather");
+        // dispatch({ type: "SET_CITY", payload: { lat: city.lat, lon: city.lon } });
+        navigate("weather/" + city.lat + "/" + city.lon);
       }}>
       <Col>{city.name}</Col>
       <Col xs={4}>{city.state}</Col>
