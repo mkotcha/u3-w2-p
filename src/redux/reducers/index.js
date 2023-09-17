@@ -8,6 +8,10 @@ const initialState = {
   },
 };
 
+// const isFavourite = city => {
+//   return city;
+// };
+
 const mainReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SET_CITY":
@@ -16,7 +20,7 @@ const mainReducer = (state = initialState, action) => {
         city: action.payload,
       };
 
-    case "ADD_TO_FAVOURITE":
+    case "ADD_TO_FAVOURITES":
       return {
         ...state,
         favourites: {
@@ -25,12 +29,20 @@ const mainReducer = (state = initialState, action) => {
         },
       };
 
-    case "REMOVE_FROM_FAVOURITE":
+    case "REMOVE_FROM_FAVOURITES":
       return {
         ...state,
         favourites: {
           ...state.favourites,
           content: state.favourites.content.filter(elm => elm !== action.payload),
+        },
+      };
+
+    case "SET_FAVOURITES":
+      return {
+        ...state,
+        favourites: {
+          content: action.payload,
         },
       };
 

@@ -13,14 +13,14 @@ function App() {
 
   useEffect(() => {
     const favString = localStorage.getItem("favourites");
-    let favArray = [];
+    const favArray = [];
     if (favString) {
-      const jsonFav = JSON.parse(favString);
-      favArray = jsonFav;
+      favArray.push(...JSON.parse(favString));
     }
 
     if (favourites.length === 0 && favArray.length > 0) {
-      favArray.map(city => dispatch({ type: "ADD_TO_FAVOURITE", payload: city }));
+      // favArray.map(city => dispatch({ type: "ADD_TO_FAVOURITE", payload: city }));
+      dispatch({ type: "SET_FAVOURITES", payload: [...favArray] });
     }
   }, []);
 
